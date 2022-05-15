@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HOME NETWORK</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>PRESS BUTTON</h2> 
+        </div>
+        <div class="main">
+            <div>
+                <button onclick="go()">GO</button>
+            </div>
+            <div>
+                <button onclick="emer()">EMERGENCY!!</button>
+            </div>
+        </div>
+        <div id="result">
+
+        </div>
+    </div>
+<script>
+            function go(){
+                fetch("/go")
+                .then(response => response.text())
+                .then(data=> {
+                    console.log(data);
+                    let result = document.querySelector("#result");
+                    result.innerHTML = "<h1>runinng</h1>";
+            });
+        }
+
+        function emer(){
+            fetch("/emer")
+            .then(response => response.text())
+            .then(data=> {
+                console.log(data);
+                let result = document.querySelector("#result");
+                result.innerHTML = "<h1>runinng</h1>";
+            });
+        }
+    </script>
+</body>
+</html>
